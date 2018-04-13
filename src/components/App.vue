@@ -6,11 +6,13 @@
     </div>
 
     <div>
-      <address-card v-for="card in cardList" v-bind:marked="card" v-bind:key="card.id" v-on:test="markedFunction" />
+      <address-card v-for="card in cardList" v-bind:marked="card" v-bind:key="card.id" v-on:test="markedFunction" v-on:update="update"
+      v-bind:index="indexNr"/>
     </div>
       
     <div id="markedCard">
         {{markedName}}
+        {{markedNr}}
     </div>
 
   </div>
@@ -28,20 +30,28 @@ export default {
     return {
       cardList: [],
         markedName : "",
+        markedNr : undefined,
+        indexNr : 0
     };
   },
   methods: {
     addCard: function(name, nr) {
       if(name !== "" && nr !== undefined) {
-        let newUser = {
+        let newCard = {
           name: name,
-          nr: nr  
+          nr: nr,
+          indexNr : this.indexNr++
         };
-        this.cardList.push(newUser);
+          console.log(newCard);
+        this.cardList.push(newCard);
       }
     },
     markedFunction : function(name, nr) {
         this.markedName = name;
+        this.markedNr = nr;
+    },
+    update : function(name, nr, index) {
+        console.log(name, nr, index);
     }
   }
 };
