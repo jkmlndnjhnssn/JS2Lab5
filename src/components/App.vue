@@ -1,15 +1,14 @@
 <template>
   <div id="app">
-    
+
     <div>
       <input-user v-on:add-card="addCard" />
     </div>
 
     <div>
-      <address-card v-for="card in cardList" v-bind:marked="card" v-bind:key="card.id" v-on:test="markedFunction" v-on:update="update"
-      v-bind:index="indexNr"/>
+      <address-card v-for="(card, index) in cardList" v-bind:marked="card" v-bind:index="index" v-bind:key="card.id" v-on:test="markedFunction" v-on:update="update"/>
     </div>
-      
+
     <div id="markedCard">
         {{markedName}}
         {{markedNr}}
@@ -30,8 +29,7 @@ export default {
     return {
       cardList: [],
         markedName : "",
-        markedNr : undefined,
-        indexNr : 0
+        markedNr : undefined
     };
   },
   methods: {
@@ -39,10 +37,8 @@ export default {
       if(name !== "" && nr !== undefined) {
         let newCard = {
           name: name,
-          nr: nr,
-          indexNr : this.indexNr++
+          nr: nr
         };
-          console.log(newCard);
         this.cardList.push(newCard);
       }
     },
@@ -50,8 +46,14 @@ export default {
         this.markedName = name;
         this.markedNr = nr;
     },
-    update : function(name, nr, index) {
-        console.log(name, nr, index);
+    update : function(namePara, nrPara, indexPara) {
+      let updatedCard = {
+        name : namePara,
+        nr : nrPara
+      }
+      this.markedName = updatedCard.name;
+      this.markedNr = updatedCard.nr;
+      this.cardList.splice(indexPara, 1, updatedCard);
     }
   }
 };
@@ -66,7 +68,7 @@ export default {
   outline : none;
 }
 body {
-  background-color : aqua;
+  background-color : blue;
 }
 </style>
 
@@ -77,10 +79,11 @@ body {
         position: absolute;
         top: 0;
         right: 0;
-        width: 100px;
-        height: 100px;
+        width: 300px;
+        height: 250px;
         background-color: red;
         color: white;
         text-align: center;
+        margin: 20px;
     }
 </style>

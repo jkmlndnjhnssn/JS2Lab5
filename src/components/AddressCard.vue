@@ -1,4 +1,3 @@
-
 <template>
     <div id = "card" v-on:click="$emit('test', marked.name, marked.nr)">
         <div v-if="normal">
@@ -17,7 +16,6 @@
 <script>
 export default {
     props :   ['marked', 'index'],
-    
     data : function() {
         return {
             editMode : false,
@@ -32,20 +30,20 @@ export default {
                 this.editMode = true;
                 this.normal = false;
             }
-            else {                                
+            else {
                 this.editMode = false;
-                this.normal = true;   
+                this.normal = true;
             }
-            
+
         },
         update : function() {
             if(!this.editMode) {
                 this.editMode = true;
                 this.normal = false;
             }
-            else {                                
+            else {
                 this.editMode = false;
-                this.normal = true;   
+                this.normal = true;
             }
             this.$emit('update', this.newName, this.newNr, this.index);
         }
@@ -55,13 +53,14 @@ export default {
 
 <style scoped>
 #card{
-    width: 250px;
-    height: 100px;
+    position: relative;
+    top: 10px;
+    width: 350px;
+    height: 150px;
     background-color: red;
     margin: auto;
     text-align: center;
     margin-top: 10px;
-    border-radius: 10px;
     color: white;
 }
 </style>
