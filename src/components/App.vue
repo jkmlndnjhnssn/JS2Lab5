@@ -10,8 +10,12 @@
     </div>
 
     <div id="markedCard">
-        {{markedName}}
-        {{markedNr}}
+        <span>
+            Markerat adresskort
+        </span>
+        <div>{{markedName}}</div>
+        <div>{{markedNr}}</div>
+        <div>{{markedAdress}}</div>
     </div>
 
   </div>
@@ -29,30 +33,36 @@ export default {
     return {
       cardList: [],
         markedName : "",
-        markedNr : undefined
+        markedNr : undefined,
+        markedAdress: ""
     };
   },
   methods: {
-    addCard: function(name, nr) {
-      if(name !== "" && nr !== undefined) {
+    addCard: function(name, nr, adress) {
+      if(name !== "" && nr !== undefined && adress !== "") {
         let newCard = {
           name: name,
-          nr: nr
+          nr: nr,
+          adress: adress
         };
+          console.log(newCard);
         this.cardList.push(newCard);
       }
     },
-    markedFunction : function(name, nr) {
+    markedFunction : function(name, nr, adress) {
         this.markedName = name;
         this.markedNr = nr;
+        this.markedAdress = adress;
     },
-    update : function(namePara, nrPara, indexPara) {
+    update : function(namePara, nrPara, adressPara, indexPara) {
       let updatedCard = {
         name : namePara,
-        nr : nrPara
+        nr : nrPara,
+        adress : adressPara
       }
       this.markedName = updatedCard.name;
       this.markedNr = updatedCard.nr;
+      this.markedAdress = updatedCard.adress;
       this.cardList.splice(indexPara, 1, updatedCard);
     }
   }
@@ -68,7 +78,7 @@ export default {
   outline : none;
 }
 body {
-  background-color : blue;
+  background-color : #ECE5CE;
 }
 </style>
 
@@ -76,14 +86,26 @@ body {
 <!-- It only affect current component -->
 <style scoped>
     #markedCard{
-        position: absolute;
+        position: fixed;
         top: 0;
         right: 0;
         width: 300px;
-        height: 250px;
-        background-color: red;
+        height: 160px;
+        background-color: #E08E79;
         color: white;
         text-align: center;
         margin: 20px;
+        border-radius: 5px;
+        padding:10px;
+    }
+    #markedCard > div {
+        background-color: white;
+        color: black;
+        margin: auto;
+        margin-top: 5px;
+        width: 60%;
+        border-radius: 5px;
+        text-align: left;
+        padding: 5px;
     }
 </style>
