@@ -10,12 +10,12 @@
     </div>
 
     <div id="markedCard">
-        <span>
+        <div class='header'>
             Markerat adresskort
-        </span>
-        <div>{{markedName}}</div>
-        <div>{{markedNr}}</div>
-        <div>{{markedAdress}}</div>
+        </div>
+        <div>Namn: {{markedName}}</div>
+        <div>Telefonnummer: {{markedNr}}</div>
+        <div>Adress: {{markedAdress}}</div>
     </div>
 
   </div>
@@ -79,6 +79,11 @@ export default {
 }
 body {
   background-color : #ECE5CE;
+  background-image: url(./notebook.png);
+  background-repeat:space;
+  background-size: 300px 320px;
+  background-attachment: fixed;
+  background-position: center left;
 }
 </style>
 
@@ -90,8 +95,8 @@ body {
         top: 0;
         right: 0;
         width: 300px;
-        height: 160px;
-        background-color: #E08E79;
+        height: 180px;
+        background-color: rgba(224,142,121, 0.95);
         color: white;
         text-align: center;
         margin: 20px;
@@ -107,5 +112,11 @@ body {
         border-radius: 5px;
         text-align: left;
         padding: 5px;
+    }
+    #markedCard > .header {
+        font-size: 1em;
+        color: white;
+        background-color: rgba(224,142,121, 0.1);
+        text-align: center;
     }
 </style>

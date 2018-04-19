@@ -1,5 +1,6 @@
 <template>
     <div id = "card" v-on:click="$emit('test', marked.name, marked.nr, marked.adress)">
+        <div class="header">Adresskort</div>
         <div v-if="normal">
            Namn: {{marked.name}}
         </div>
@@ -60,8 +61,8 @@
         position: relative;
         top: 10px;
         width: 350px;
-        height: 160px;
-        background-color: #E08E79;
+        height: 180px;
+        background-color: rgba(224,142,121, 0.95);
         margin: auto;
         text-align: center;
         margin-top: 10px;
@@ -101,6 +102,13 @@
         border-radius: 5px;
         text-align: left;
         padding: 5px;
+    }
+    
+    .header {
+        font-size: 1em;
+        color: white;
+        background-color: rgba(224,142,121, 0.1);
+        text-align: center;
     }
 
 </style>

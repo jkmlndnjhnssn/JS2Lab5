@@ -1,5 +1,6 @@
 <template>
     <div>
+        Lägg till kort i adressboken
         <input type="text" placeholder="För- och Efternamn" v-model="name" />
         <input type="text" placeholder="Telefonnummer" v-model="nr" />
         <input type="text" placeholder="Adress" v-model="adress" />
@@ -21,17 +22,18 @@
 </script>
 
 <style scoped>
+
     div {
         position: fixed;
-        display: flex;
-        flex-direction: column;
         top: 0;
-        height: 160px;
+        height: 180px;
         width: 300px;
-        background-color: #E08E79;
+        background-color: rgba(224,142,121, 0.95);
         padding: 10px;
         margin: 20px;
         border-radius: 5px;
+        text-align: center;
+        color: white;
     }
     
     input {
